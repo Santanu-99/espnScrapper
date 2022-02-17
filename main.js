@@ -2,7 +2,20 @@ const url = "https://www.espncricinfo.com/series/ipl-2020-21-1210595";
 
 const request = require("request");
 const cheerio = require("cheerio");
+const fs = require('fs');
 const allMatchObj = require("./allMatch");
+const path = require("path");
+
+function dirCreator(folderPath){
+  if(fs.existsSync(folderPath) == false){
+    fs.mkdirSync(folderPath);
+  }
+}
+
+
+let iplPath = path.join(__dirname,"IPL");
+
+dirCreator(iplPath);
 
 request(url, cb);
 
